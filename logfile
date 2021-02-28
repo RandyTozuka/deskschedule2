@@ -1,0 +1,12 @@
+2021-02-27 10:18:10.079 JST [20842] FATAL:  database files are incompatible with server
+2021-02-27 10:18:10.079 JST [20842] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.2.
+2021-02-27 14:35:39.069 JST [1346] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-02-27 14:35:39.073 JST [1346] LOG:  listening on IPv6 address "::1", port 5432
+2021-02-27 14:35:39.073 JST [1346] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-27 14:35:39.079 JST [1346] FATAL:  could not create lock file "/tmp/.s.PGSQL.5432.lock": Permission denied
+2021-02-27 14:35:39.080 JST [1346] LOG:  database system is shut down
+2021-02-27 15:18:50.236 JST [1998] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-02-27 15:18:50.241 JST [1998] LOG:  listening on IPv6 address "::1", port 5432
+2021-02-27 15:18:50.241 JST [1998] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-27 15:18:50.246 JST [1998] FATAL:  could not create lock file "/tmp/.s.PGSQL.5432.lock": Permission denied
+2021-02-27 15:18:50.248 JST [1998] LOG:  database system is shut down

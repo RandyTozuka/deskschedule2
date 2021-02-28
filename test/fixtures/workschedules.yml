@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wdate: 2021-03-01
+  user: one
+  status: one
+
+two:
+  wdate: 2021-03-01
+  user: two
+  status: two
