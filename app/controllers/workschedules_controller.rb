@@ -38,13 +38,13 @@ class WorkschedulesController < ApplicationController
     @user = current_user
     @statuses= Status.all
     @workschedule = Workschedule.find(params[:id])
+    # binding.pry
   end
 
   def update
     @user = current_user
     @date = workschedule_params[:wdate]
     @workschedule = Workschedule.find(params[:id])
-    # binding.pry
     if @workschedule.update(workschedule_params)
       flash[:success]= "編集できました"
       redirect_to root_path and return
@@ -55,8 +55,10 @@ class WorkschedulesController < ApplicationController
   end
 
   def destroy
+    # binding.pry
     @workschedule = Workschedule.find(params[:id])
     @workschedule.destroy
+    redirect_to root_path
   end
 
   private

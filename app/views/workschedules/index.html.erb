@@ -3,5 +3,6 @@
 <% @workschedules.each do |w|  %>
   <%= w.wdate.strftime("%Y年%m月%d日(#{@week_days[w.wdate.wday]})") %>
   <!--曜日の日本語化→ https://techracho.bpsinc.jp/hachi8833/2016_10_06/25960 -->
-  <%= link_to Status.find(w.status_id).status, edit_workschedule_path(w) %></br>
+  <%= link_to Status.find(w.status_id).status, edit_workschedule_path(w) %>
+  <%= link_to "予定削除", workschedule_path(w), method: :delete, data:{confirm:"削除してよろしいですか?"} %></br>
 <% end %>
