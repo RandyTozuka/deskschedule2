@@ -1,1 +1,20 @@
-<h1>This is the edit page!</h1>
+<h1>勤務予定編集ページ</h1>
+<div class="wrapper">
+  <%= link_to "#{@user.email}さんの勤務予定", root_path %>
+  <%= form_with(model: @workschedule, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :日時 %>
+      <%= f.date_field :wdate, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :勤務ステータス %></br>
+      <%= f.collection_select :status_id, @statuses, :id, :status %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "予定編集投入",class: "button-create" %>
+    </div>
+    <div class="form-group">
+      <%= link_to "予定削除", workschedule_path(f), method: :delete, data:{confirm:"削除してよろしいですか?"} %>
+    </div>
+  <% end %>
+</div>
