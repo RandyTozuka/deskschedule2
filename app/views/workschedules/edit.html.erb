@@ -1,6 +1,5 @@
-<h1>勤務予定編集ページ</h1>
 <div class="wrapper">
-  <%= link_to "#{@user.email}さんの勤務予定", root_path %>
+  <h1><%= link_to "#{@user.email}さんの勤務予定", root_path %></h1>
   <%= form_with(model: @workschedule, local: true) do |f| %>
     <div class="form-group">
       <%= f.label :日時 %>

@@ -3,8 +3,13 @@ class WorkschedulesController < ApplicationController
   def index
     if current_user
       @user = current_user
-      @workschedules = Workschedule.where(user_id: current_user.id).page(params[:page]).per(7)
-      @week_days =["日","月","火","水","木","金","土"]
+      @week_days = ["日","月","火","水","木","金","土"]
+      now = Time.current.next_month
+      @workschedules = Workschedule.where(wdate: now.all_month)
+                                   .where(user_id: current_user.id)
+      #all_month    参考: https://qiita.com/whitefox_105/items/7c1d409ebd863fab5cb5
+      #Time.current 参考: https://qiita.com/kodai_0122/items/111457104f83f1fb2259
+      # @workschedules = Workschedule.where(user_id: current_user.id).page(params[:page]).per(7)
     end
   end
 
