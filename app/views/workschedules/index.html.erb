@@ -1,8 +1,24 @@
-<h1><%= @user.email %>さんの勤務予定</h1>
-<p><%= link_to '予定投入', new_workschedule_path %></p>
-<% @workschedules.each do |w|  %>
-  <%= w.wdate.strftime("%Y年%m月%d日(#{@week_days[w.wdate.wday]})") %>
-  <!--曜日の日本語化→ https://techracho.bpsinc.jp/hachi8833/2016_10_06/25960 -->
-  <%= link_to Status.find(w.status_id).status, edit_workschedule_path(w) %>
-  <%= link_to "予定削除", workschedule_path(w), method: :delete, data:{confirm:"削除してよろしいですか?"} %></br>
+<% if current_user %>
+  <h1><%= @user.email %>さんの勤務予定</h1>
+  <p><%= link_to '予定投入', new_workschedule_path %></p>
+  <table class="workschedule_table table table-hover" >
+    <thead>
+      <tr>
+        <th style="width:40%">日時</th>
+        <th style="width:30%">勤務携帯</th>
+        <th style="width:30%">削除</th>
+      </tr>
+    </thead>
+    <% @workschedules.each do |w|  %>
+    <tbody>
+      <tr>
+        <td><%= w.wdate.strftime("%Y年%m月%d日(#{@week_days[w.wdate.wday]})") %></td>
+        <td><%= link_to Status.find(w.status_id).status, edit_workschedule_path(w) %></td>
+        <td><%= link_to "予定削除", workschedule_path(w), method: :delete, data:{confirm:"削除してよろしいですか?"} %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <!--曜日の日本語化 → https://techracho.bpsinc.jp/hachi8833/2016_10_06/25960 -->
 <% end %>
+<%= paginate @workschedules %>

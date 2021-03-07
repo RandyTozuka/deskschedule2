@@ -43,6 +43,8 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 # pry
 gem 'pry-rails'
+# kaminari(pagenation)
+gem 'kaminari'
 #------------------------------------------------------------------
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

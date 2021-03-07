@@ -1,9 +1,11 @@
 class WorkschedulesController < ApplicationController
   # binding.pry
   def index
-    @user = current_user
-    @workschedules = Workschedule.where(user_id: current_user.id)
-    @week_days =["日","月","火","水","木","金","土"]
+    if current_user
+      @user = current_user
+      @workschedules = Workschedule.where(user_id: current_user.id).page(params[:page]).per(7)
+      @week_days =["日","月","火","水","木","金","土"]
+    end
   end
 
   def new
@@ -55,8 +57,8 @@ class WorkschedulesController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @workschedule = Workschedule.find(params[:id])
+    # binding.pry
     @workschedule.destroy
     redirect_to root_path
   end
