@@ -4,12 +4,14 @@ class WorkschedulesController < ApplicationController
     if current_user
       @user = current_user
       @week_days = ["日","月","火","水","木","金","土"]
-      now = Time.current.next_month
-      @workschedules = Workschedule.where(wdate: now.all_month)
-                                   .where(user_id: current_user.id)
+      @now = Time.current
+      @next_month = Time.current.next_month
+      @previous_month = Time.current.prev_month
+      @workschedules = Workschedule.where(wdate: @now.all_month).where(user_id: current_user.id)
+      @workschedules_next_month = Workschedule.where(wdate: @next_month.all_month).where(user_id: current_user.id)
+      @workschedules_previous_month = Workschedule.where(wdate: @previous_month.all_month).where(user_id: current_user.id)
       #all_month    参考: https://qiita.com/whitefox_105/items/7c1d409ebd863fab5cb5
       #Time.current 参考: https://qiita.com/kodai_0122/items/111457104f83f1fb2259
-      # @workschedules = Workschedule.where(user_id: current_user.id).page(params[:page]).per(7)
     end
   end
 
