@@ -2,7 +2,8 @@
   <% if current_user %>
     <%= link_to '予定投入', new_workschedule_path, class: 'schedule-input-btn btn btn-primary' %>
     <h1><%= @user.email %>さん</h1>
-    <h1><%= @now.month %>月の勤務予定</h1>
+    <h3><%= @now.month %>月の勤務予定</h3>
+    </div>
     <table class="workschedule_table table table-hover" >
       <thead>
         <tr>

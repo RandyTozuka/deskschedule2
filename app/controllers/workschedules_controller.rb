@@ -1,6 +1,9 @@
 class WorkschedulesController < ApplicationController
   # binding.pry
   def index
+    if user_signed_in? && current_user.admin?
+      @hello = "Hello!"
+    end
     if current_user
       @user = current_user
       @week_days = ["日","月","火","水","木","金","土"]
