@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+
+@ws.each_with_index do |excel|
+  wb.add_worksheet(name: excel.wdate.to_s) do |sheet|
+    sheet.add_row [ "日付", "ステータス" ]
+    sheet.add_row [ excel.wdate, excel.status_id ]
+  end
+end

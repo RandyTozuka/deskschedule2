@@ -1,4 +1,8 @@
 <div class="container">
   <h1>adminのページ</h1>
-  <%= @hello  %>
+  <% @ws.each do |f|  %>
+    <p><%= f.wdate  %></p>
+    <p><%= @users.find(f.user_id).email  %></p>
+    <p><%= @statuses.find(f.status_id).status %></p>
+  <% end %>
 </div>

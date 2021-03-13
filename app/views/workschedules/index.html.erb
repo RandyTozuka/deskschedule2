@@ -1,5 +1,6 @@
 <div class="wrapper">
   <% if user_signed_in? && current_user.admin? %>
+    <%= link_to "Excel出力", workschedules_path(@workschedules, format: :xlsx) %>
     <%= render 'layouts/index-admin' %>
   <% else %>
     <%= render 'layouts/index-nonadmin' %>

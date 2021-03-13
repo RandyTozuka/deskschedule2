@@ -2,10 +2,19 @@ class WorkschedulesController < ApplicationController
   # binding.pry
   def index
     if user_signed_in? && current_user.admin?
-      @hello = "Hello!"
-    end
-    if current_user
       @user = current_user
+      @ws= Workschedule.all
+      respond_to do |format|
+        format.html
+        format.xlsx do
+          # ファイル名をここで指定する（動的にファイル名を変更できる）
+          response.headers['Content-Disposition'] = "attachment; filename=#{Date.today}.xlsx"
+        end
+      end
+    end#of if
+    if user_signed_in? && current_user
+      @user = current_user
+      @users = User.all
       @week_days = ["日","月","火","水","木","金","土"]
       @now = Time.current
       @next_month = Time.current.next_month
@@ -13,10 +22,11 @@ class WorkschedulesController < ApplicationController
       @workschedules = Workschedule.where(wdate: @now.all_month).where(user_id: current_user.id)
       @workschedules_next_month = Workschedule.where(wdate: @next_month.all_month).where(user_id: current_user.id)
       @workschedules_previous_month = Workschedule.where(wdate: @previous_month.all_month).where(user_id: current_user.id)
+      @statuses= Status.all
       #all_month    参考: https://qiita.com/whitefox_105/items/7c1d409ebd863fab5cb5
       #Time.current 参考: https://qiita.com/kodai_0122/items/111457104f83f1fb2259
-    end
-  end
+    end#of if
+  end#of def
 
   def new
     if current_user
@@ -73,9 +83,18 @@ class WorkschedulesController < ApplicationController
     redirect_to root_path
   end
 
+  # def excel
+  #   @ws= ::Workschedule.all
+  #   respond_to do |format|
+  #     format.html
+  #     format.xlsx{response.headers['Content-Disposition'] = 'attachment; filename="workschedule_lists"'+ Time.zone.now.strftime('%Y%m%d%H%M%S') + '.xlsx'}
+  #   end
+  # end#of def
+
   private
       def workschedule_params
         params.require(:workschedule).permit(:wdate, :status_id).merge(user_id: current_user.id)
       end
 
-end
+
+end#of class

@@ -45,6 +45,12 @@ gem "jquery-ui-rails"
 gem 'pry-rails'
 # kaminari(pagenation)
 gem 'kaminari'
+#  axlsx_rails 参考：https://qiita.com/necojackarc/items/0dbd672b2888c30c5a38#gemfile
+# gem 'axlsx_rails'
+# gem 'zip-zip'
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 #------------------------------------------------------------------
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
