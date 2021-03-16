@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.6'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -46,8 +46,6 @@ gem 'pry-rails'
 # kaminari(pagenation)
 gem 'kaminari'
 #  axlsx_rails 参考：https://qiita.com/necojackarc/items/0dbd672b2888c30c5a38#gemfile
-# gem 'axlsx_rails'
-# gem 'zip-zip'
 gem 'rubyzip', '>= 1.2.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
